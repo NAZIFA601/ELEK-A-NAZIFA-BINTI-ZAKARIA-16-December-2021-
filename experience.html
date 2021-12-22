@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width= device-width, initial-scale=1">
+    <title>experience</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+      <!--banner-->
+   <section class="banner">
+    <center>
+
+        <img src="banner.png" alt="banner" width="900" height="400" />  
+    
+    </center>
+   </section>  
+
+<br><br>
+
+    <!--header-->
+  <header>
+    <center>
+
+        <ul>
+           <li class="active"><a href="index.html"><b>HOME</b></a></li>         
+           <li class="active"><a href="student.html"><b>STUDENT DETAILS</b></a></li>
+           <li class="active"><a href="aboutme.html"><b>ABOUT ME</b></a></li>
+           <li class="active"><a href="education.html"><b>EDUCATION</b></a></li>
+           <li class="active"><a href="experience.html"><b>EXPERIENCE</b></a></li>
+           <li class="active"><a href="resume.html"><b>RESUME DETAILS</b></a></li>
+           <li class="active"><a href="contactme.html"><b>CONTACT ME</b></a></li>
+    </ul>
+    </center>
+  </header>
+
+   <center>
+    <canvas id="canvas" width="150" height="150" ></canvas>
+    
+    <script>
+    var canvas = document.getElementById ("canvas");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius);
+    radius = radius * 0.90
+    setInterval(drawClock, 1000);
+    
+    function drawClock() {
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+    }
+    
+    function drawFace(ctx, radius) {
+      var grad;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2*Math.PI);
+      ctx.fillStyle = 'white';
+      ctx.fill();
+      grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+      grad.addColorStop(0,'#333');
+      grad.addColorStop(0.5,'white');
+      grad.addColorStop(1,'#333');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius*0.1;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+      ctx.fillStyle = '#333';
+      ctx.fill();
+    }
+    
+    function drawNumbers(ctx, radius) {
+      var ang;
+      var num;
+      ctx.font = radius*0.15 + "px arial";
+      ctx.textBaseline="middle";
+      ctx.textAlign="center";
+      for(num = 1; num < 13; num++){
+        ang = num * Math.PI / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius*0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius*0.85);
+        ctx.rotate(-ang);
+      }
+    }
+    
+    function drawTime(ctx, radius){
+        var now = new Date();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        //hour
+        hour=hour%12;
+        hour=(hour*Math.PI/6)+
+        (minute*Math.PI/(6*60))+
+        (second*Math.PI/(360*60));
+        drawHand(ctx, hour, radius*0.5, radius*0.07);
+        //minute
+        minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+        drawHand(ctx, minute, radius*0.8, radius*0.07);
+        // second
+        second=(second*Math.PI/30);
+        drawHand(ctx, second, radius*0.9, radius*0.02);
+    }
+    
+    function drawHand(ctx, pos, length, width) {
+        ctx.beginPath();
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+        ctx.moveTo(0,0);
+        ctx.rotate(pos);
+        ctx.lineTo(0, -length);
+        ctx.stroke();
+        ctx.rotate(-pos);
+    }
+    </script>
+   </center>
+   <br><br>
+   <section class="experience">
+    <center>
+
+     <br>
+
+     <h1 id = "experience">- EXPERIENCE -</h1>
+
+     <table>
+         <tr>
+           <th><h2> AS A LIBRARIAN</h2><img src="intern.jpg" alt="intern" width="200" height="200"><img src="intern1.jpg" alt="intern1" width="300" height="200"><p>I had the experience of working at UITM Bertam's Library during my internship period. 
+             There were many things that I learnt from the session, such as book and social media's management, content and information promotion and more. </p></th>
+         </tr>
+         <br><br>
+         <tr>
+           <th><h2>AS A DEPUTY SECRETARY </h2><img src="iman.JPG" alt="iman" width="400" height="200"><p>I also actively invovled in organizational club at UITM during my diploma years. I had learnt to manage, organize and conduct few programs and events.
+              I also learnt to create minute meetings and manage paper works .</p></th>
+         </tr>
+     
+       </table>
+
+
+ </center>
+ <br><br>
+ </section>
+
+<!--footer-->
+<footer>
+ <center>
+ <section class"container">
+   
+ <br>
+
+ <a href="aboutme.html"><italic><h4>ABOUT ME</h4></italic></a>
+ <a href="contactme.html"><italic><h4>CONTACT ME</h4></italic></a>
+
+ <h5> &copy; 2021 NAZIFA BINTI ZAKARIA (2021606814)</h5>
+ <h5>DISCLAIMER:THIS WEBSITE FOR ASSIGNMENT PURPOSE ONLY</h5>
+ <h5>Recommended browser Google Chrome. Resolution 1366 x 768.</h5>
+ <h5>Last update 16 Dec 2021</h5>
+ 
+ 
+ <section class="media"> 
+
+   <ul>
+     <li><a href="https://www.facebook.com/profile.php?id=100001883119222"><i class="fa fa-facebook-square fa-2x" ></i></a></li>
+     <li><a href="https://www.instagram.com/nazifabz/?hl=en" ><i class="fa fa-instagram fa-2x" ></i></a></li> 
+ </section> 
+
+   </ul>
+
+   <center><p>Go to the
+    <a href="#experience">top</a>.
+  </p></center>
+
+ <br>
+ </section>
+ </center>
+</footer>
+
+</body>
+</html>
